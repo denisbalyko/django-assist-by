@@ -1,0 +1,20 @@
+#coding: utf-8
+from django.conf import settings
+
+from assist.constants import *
+
+# обязательные параметры - реквизиты магазина
+SHOP_IDP = settings.ASSIST_SHOP_IDP
+LOGIN = settings.ASSIST_LOGIN
+PASSWORD = settings.ASSIST_PASSWORD
+
+REAL_ASSIST_SERVER = getattr(settings, 'ASSIST_SERVER', REAL_SERVER)
+TEST_MODE = getattr(settings, 'ASSIST_TEST_MODE', False)
+
+ASSIST_SERVER = TEST_SERVER if TEST_MODE else REAL_ASSIST_SERVER
+
+MODE1_URL = ASSIST_SERVER + MODE1_PATH
+MODE2_URL = ASSIST_SERVER + MODE2_PATH
+GET_RESULTS_URL = ASSIST_SERVER + GET_RESULTS_PATH
+CHARGE_URL = ASSIST_SERVER + CHARGE_PATH
+REFUND_URL = ASSIST_SERVER + REFUND_PATH
