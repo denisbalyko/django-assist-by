@@ -1,13 +1,13 @@
 #coding: utf-8
 
 # адреса ASSIST
-TEST_SERVER = 'https://test.assist.ru'
+TEST_SERVER = 'https://test.paysec.by'
 REAL_SERVER = 'https://secure.assist.ru'
 
 MODE1_PATH = '/shops/purchase.cfm'
-MODE2_PATH = '/shops/cardpayment.cfm'
-GET_RESULTS_PATH = '/results/results.cfm'
-CHARGE_PATH = "/postauths/postauth.cfm"
+MODE2_PATH = '/pay/order.cfm'
+GET_RESULTS_PATH = '/orderstate/orderstate.cfm'
+CHARGE_PATH = "/charge/charge.cfm"
 REFUND_PATH = "/rvr/rvr.cfm"
 
 # форматы ответа на запрос

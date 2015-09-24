@@ -17,7 +17,7 @@ setup(
     download_url = 'http://bitbucket.org/kmike/django-assist-ru/get/tip.zip',
     license = 'MIT license',
     description = u'Приложение для интеграции платежной системы ASSIST в проекты на Django.'.encode('utf8'),
-    long_description = open('README.rst').read().decode('utf8'),
+    long_description = open('README.md').read().decode('utf8'),
 
     classifiers=[
         'Development Status :: 4 - Beta',

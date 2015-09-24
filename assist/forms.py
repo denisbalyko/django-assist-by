@@ -13,17 +13,17 @@ class HiddenForm(forms.Form):
 
 
 class AssistMode1Form(HiddenForm):
-    Shop_IDP        = IntegerField(label=u'Идентификатор магазина в ASSIST', initial = SHOP_IDP)
-    Order_IDP       = CharField(label=u'Номер заказа в системе расчетов Интернет-магазина', max_length=128,
+    Merchant_ID        = IntegerField(label=u'Идентификатор магазина в ASSIST', initial = SHOP_IDP)
+    OrderNumber       = CharField(label=u'Номер заказа в системе расчетов Интернет-магазина', max_length=128,
                                 help_text=u'Номер заказа должен быть уникален, иначе платеж будет неуспешным')
-    Subtotal_P      = DecimalField(label=u'Сумма платежа в оригинальной валюте', max_digits=17, decimal_places = 2)
-    Currency        = CharField(label=u'Код валюты, в которой указана сумма платежа Subtotal_P', max_length=3, required=False)
+    OrderAmount      = DecimalField(label=u'Сумма платежа в оригинальной валюте', max_digits=17, decimal_places = 2)
+    OrderCurrency        = CharField(label=u'Код валюты, в которой указана сумма платежа Subtotal_P', max_length=3, required=False)
     Language        = IntegerField(label=u'Язык авторизационных страниц ASSIST', required=False, initial=0)
     Delay           = IntegerField(label=u'Признак авторизации кредитной карты при двустадийном механизме работы', required=False, initial=0)
     URL_RETURN      = CharField(label=u'URL страницы, на которую должен вернуться покупатель после осуществления платежа при нажатии кнопки «Вернуться в магазин»', max_length=128, required=False)
     URL_RETURN_OK   = CharField(label=u'URL страницы, куда должен вернуться покупатель после успешного осуществления платежа', max_length=128, required=False)
     URL_RETURN_NO   = CharField(label=u'URL страницы, куда должен вернуться покупатель после неуспешного осуществления платежа', max_length=128, required=False)
-    Comment         = CharField(label=u'Комментарий', max_length=255, required=False,
+    OrderComment         = CharField(label=u'Комментарий', max_length=255, required=False,
                                 help_text=u'передается в ASSIST и отображается в выписках по операциям')
     ChoosenCardType = IntegerField(label=u'Идентификатор типа карты для оплаты.', required=False,
                                    help_text=u"1 – VISA 2 - EC/MC 3 – DCL 4 – JCB 5- AMEX. Покупатель сможет оплатить покупку только картой указанного типа (указанный тип карт должен быть активирован для магазина).")
@@ -47,7 +47,7 @@ class AssistMode2Form(AssistMode1Form):
     FirstName = CharField(label=u'Имя', max_length=64)
     MiddleName = CharField(label=u'Отчество', max_length=64, required=False)
     Email = forms.EmailField(label=u'Электронный адрес', max_length=64)
-    Phone = CharField(label=u'Телефон', max_length=64, required=False)
+    MobilePhone = CharField(label=u'Телефон', max_length=64, required=False)
     Address = CharField(label=u'Адрес', max_length=128, required=False)
     Country = CharField(label=u'Код страны покупателя', max_length=3, required=False)
     State = CharField(label=u'Код штата/региона', max_length=3, required=False)
