@@ -25,7 +25,7 @@ class AssistAuthResultManager(models.Manager):
         return instances
 
     def meaningful(self, OrderNumber):
-        results = list(self.get_query_set().filter(OrderNumber = OrderNumber).order_by('-BillNumber'))
+        results = list(self.get_queryset().filter(OrderNumber = OrderNumber).order_by('-BillNumber'))
         to_remove = set(['in process'])
         for bill in results:
             if bill.Status == 'Authorized': to_remove.add('Not authorized')
