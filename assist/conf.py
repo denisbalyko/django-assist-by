@@ -4,7 +4,7 @@ from django.conf import settings
 from assist.constants import *
 
 # обязательные параметры - реквизиты магазина
-SHOP_IDP = settings.ASSIST_SHOP_IDP
+MERCHANT_ID = settings.ASSIST_MERCHANT_ID
 LOGIN = settings.ASSIST_LOGIN
 PASSWORD = settings.ASSIST_PASSWORD
 

@@ -8,7 +8,7 @@ settings.configure(
     INSTALLED_APPS=('assist',),
     DATABASE_ENGINE = 'sqlite3',
 
-    ASSIST_SHOP_IDP = 'test_shop',
+    ASSIST_MERCHANT_ID = 'test_shop',
     ASSIST_LOGIN = 'test_login',
     ASSIST_PASSWORD = 'test_password',
 )

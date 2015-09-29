@@ -7,7 +7,7 @@ from datetime import datetime
 from django.utils.datastructures import SortedDict
 
 from assist import AssistChargeError
-from assist.conf import GET_RESULTS_URL, REFUND_URL, CHARGE_URL, SHOP_IDP, LOGIN, PASSWORD
+from assist.conf import GET_RESULTS_URL, REFUND_URL, CHARGE_URL, MERCHANT_ID, LOGIN, PASSWORD
 from assist.constants import FIELDS_MAPPING, ASSIST_FORMAT_CSV, ASSIST_RVR_SHOP, ASSIST_LANGUAGE_EN
 
 def _load_url(url, data=None, timeout=None):
@@ -74,7 +74,7 @@ def charge_bill(Billnumber, Subtotal_P=None, Currency=None,
         raise NotImplementedError('Only CSV responses are supported')
 
     data = [
-        ('Shop_ID', SHOP_IDP),
+        ('Merchant_ID', MERCHANT_ID),
         ('Login', LOGIN),
         ('PASSWORD', PASSWORD),
         ('Billnumber', Billnumber),
@@ -104,10 +104,10 @@ def fetch_auth_report():
         По правилам ASSIST, нельзя выполнять чаще, чем 1 раз в 10 минут.
     """
     data = urllib.urlencode((
-        ('Shop_ID', SHOP_IDP),
+        ('Merchant_ID', MERCHANT_ID),
         ('Login', LOGIN),
         ('PASSWORD', PASSWORD),
-        ('Header1', 1),
+        ('Format', ASSIST_FORMAT_CSV),
     ))
     response = _load_url(GET_RESULTS_URL, data, 60)
     return parse_csv_report(response)
@@ -118,7 +118,7 @@ def refund(Billnumber, Subtotal_P=None, Currency=None, Language=ASSIST_LANGUAGE_
     """ Отменить авторизацию по кредитной карте или сделать возврат средств. """
 
     data = urllib.urlencode((
-        ('Shop_ID', SHOP_IDP),
+        ('Merchant_ID', MERCHANT_ID),
         ('Login', LOGIN),
         ('PASSWORD', PASSWORD),
         ('Billnumber', Billnumber),

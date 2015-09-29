@@ -3,7 +3,7 @@
 from django import forms
 from django.forms import CharField, IntegerField, DecimalField
 
-from assist.conf import SHOP_IDP, TEST_MODE, MODE1_URL, MODE2_URL
+from assist.conf import MERCHANT_ID, TEST_MODE, MODE1_URL, MODE2_URL
 
 class HiddenForm(forms.Form):
     def __init__(self, *args, **kwargs):
@@ -13,7 +13,7 @@ class HiddenForm(forms.Form):
 
 
 class AssistMode1Form(HiddenForm):
-    Merchant_ID        = IntegerField(label=u'Идентификатор магазина в ASSIST', initial = SHOP_IDP)
+    Merchant_ID        = IntegerField(label=u'Идентификатор магазина в ASSIST', initial = MERCHANT_ID)
     OrderNumber       = CharField(label=u'Номер заказа в системе расчетов Интернет-магазина', max_length=128,
                                 help_text=u'Номер заказа должен быть уникален, иначе платеж будет неуспешным')
     OrderAmount      = DecimalField(label=u'Сумма платежа в оригинальной валюте', max_digits=17, decimal_places = 2)

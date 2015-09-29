@@ -4,7 +4,7 @@ from django.test import TestCase
 
 from assist.api import parse_csv_report, parse_csv_action_response
 from assist.forms import AssistMode1Form, AssistMode2Form
-from assist.conf import SHOP_IDP
+from assist.conf import MERCHANT_ID
 
 csv1 = u"Order Number;Comment;Paket date\r\n123;проверка;\r\n345;UNKNOWN;19.02.2010 04:59:14\r\n".encode('utf8')
 
@@ -19,12 +19,12 @@ class FormsTest(TestCase):
 
     def testMode1Form(self):
         form = AssistMode1Form()
-        self.assertEqual(form.fields['Shop_IDP'].initial, SHOP_IDP)
+        self.assertEqual(form.fields['Shop_IDP'].initial, MERCHANT_ID)
         self.assertEqual(form.fields['Shop_IDP'].widget.is_hidden, True)
 
     def testMode2Form(self):
         form = AssistMode2Form()
-        self.assertEqual(form.fields['Shop_IDP'].initial, SHOP_IDP)
+        self.assertEqual(form.fields['Shop_IDP'].initial, MERCHANT_ID)
         self.assertEqual(form.fields['Shop_IDP'].widget.is_hidden, True)
 
 
